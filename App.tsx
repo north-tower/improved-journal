@@ -3,6 +3,7 @@ import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import tw from 'twrnc';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './screens/HomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -11,9 +12,10 @@ export default function App() {
 
     <NavigationContainer>
       <Stack.Navigator>
-        <SafeAreaView style={tw`flex-1 items-center justify-center bg-red-500`}> 
-          <Text style={tw`text-white`}>Open up App.tsx to start working on your app!</Text>
-        </SafeAreaView>
+        <Stack.Screen name="Home" component={HomeScreen} 
+        options={{
+          headerShown: false
+        }} />
       </Stack.Navigator>
     </NavigationContainer>
    
