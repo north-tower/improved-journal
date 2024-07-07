@@ -1,5 +1,6 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, TouchableOpacity } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
+
 
 type Props = {
     title: string;
@@ -19,9 +20,11 @@ const ActionRow = ({
     vertical
 }: Props) => {
   return (
-    <View>
-      <Text>ActionRow</Text>
-    </View>
+   <TouchableOpacity style={{ backgroundColor: color}}>
+    <Ionicons name={icon} size={30} color="white" />
+    <Text>{title}</Text>
+
+   </TouchableOpacity>
   )
 }
 
