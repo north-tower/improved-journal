@@ -9,6 +9,9 @@ import Paywall from './screens/Paywall';
 import { useEffect, useState } from 'react';
 import { Session } from '@supabase/supabase-js';
 import { supabase } from '../lib/supabase';
+import SignUp from './components/SignUp';
+import SignIn from './components/SignIn';
+import Success from './components/Success';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -57,7 +60,7 @@ export default function App() {
        
       ) : (
         <>
-        <Stack.Screen name="Signin" component={But} options={{
+        <Stack.Screen name="Signin" component={SignIn} options={{
             headerShown: false,
           }} />
           <Stack.Screen name="Signup" component={SignUp} options={{
