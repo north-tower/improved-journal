@@ -6,12 +6,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import DemoScreen from './screens/DemoScreen';
 import Paywall from './screens/Paywall';
-import { useEffect, useState } from 'react';
-import { Session } from '@supabase/supabase-js';
-import { supabase } from '../lib/supabase';
-import SignUp from './components/SignUp';
-import SignIn from './components/SignIn';
-import Success from './components/Success';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -25,22 +19,12 @@ export type RootStackParamList = {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
-  const [session, setSession] = useState<Session | null>(null);
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-  }, []);
+  
   return (
 
     <NavigationContainer>
       <Stack.Navigator>
-      {session && session.user ? (
+     
       <>
         <Stack.Screen name="Home" component={HomeScreen} 
         options={{
@@ -55,21 +39,9 @@ export default function App() {
           headerShown: false,
           presentation: 'modal'
         }} />
-
-      </>
-       
-      ) : (
-        <>
-        <Stack.Screen name="Signin" component={SignIn} options={{
-            headerShown: false,
-          }} />
-          <Stack.Screen name="Signup" component={SignUp} options={{
-            headerShown: false,
-          }} />
-           <Stack.Screen name="Success" component={Success} />
         </>
         
-      )}
+
 
       </Stack.Navigator>
     </NavigationContainer>
