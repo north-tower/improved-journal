@@ -1,6 +1,11 @@
-import { View, Text, TouchableOpacity } from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
+import { View, Text, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import tw from 'twrnc';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../App';
+import { useNavigation } from '@react-navigation/native';
 
+export type NavigationProp = NativeStackNavigationProp<RootStackParamList, "Home">;
 
 type Props = {
     title: string;
@@ -19,13 +24,16 @@ const ActionRow = ({
     icon,
     vertical
 }: Props) => {
-  return (
-   <TouchableOpacity style={{ backgroundColor: color}}>
-    <Ionicons name={icon} size={30} color="white" />
-    <Text>{title}</Text>
 
-   </TouchableOpacity>
-  )
+  const navigation = useNavigation<NavigationProp>();
+  return (
+    <TouchableOpacity onPress={() => navigation.navigate(screen)}
+    style={[tw`flex m-2 flex-1 justify-center items-center py-6 rounded-lg
+    space-x-2 ${ vertical ? "flex-col" : "flex-row"}`, { backgroundColor: color }]}>
+      {icon && <Ionicons name={icon} size={30} color="white" />}
+      <Text>{title}</Text>
+    </TouchableOpacity>
+  );
 }
 
-export default ActionRow
+export default ActionRow;

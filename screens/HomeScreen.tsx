@@ -19,6 +19,9 @@ const HomeScreen = () => {
         onLoad={() => console.log('Image loaded')} 
         onError={() => console.log('Image failed to load')} 
         />
+        <View style={tw`mx-5`}>
+        <View style={tw`flex-row justify-between space-x-2`}>
+
 
         <ActionRow 
         title="Track Workout"
@@ -35,6 +38,8 @@ const HomeScreen = () => {
         icon="library"
         vertical
         />
+        </View>
+        
 
         <ActionRow 
         title="Connect with Friends"
@@ -63,6 +68,7 @@ const HomeScreen = () => {
         icon="trophy"
         requiresPro
         />
+        </View>
         
     
 </ScrollView>
