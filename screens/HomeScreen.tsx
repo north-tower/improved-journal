@@ -2,6 +2,7 @@ import { View, Text, SafeAreaView, Image, TouchableOpacity, ScrollView } from 'r
 import React from 'react'
 import tw from 'twrnc'
 import { Ionicons } from '@expo/vector-icons'
+import ActionRow from '../components/ActionRow'
 
 const HomeScreen = () => {
   return (
@@ -18,6 +19,16 @@ const HomeScreen = () => {
         onLoad={() => console.log('Image loaded')} 
         onError={() => console.log('Image failed to load')} 
         />
+
+        <ActionRow 
+        title="Track Workout"
+        screen="Demo"
+        color="#E5962D"
+        icon="fitness"
+        vertical
+        />
+        
+    
 </ScrollView>
     </SafeAreaView>
   )
