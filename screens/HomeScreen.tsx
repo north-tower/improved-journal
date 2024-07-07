@@ -3,12 +3,23 @@ import React from 'react'
 import tw from 'twrnc'
 import { Ionicons } from '@expo/vector-icons'
 import ActionRow from '../components/ActionRow'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RootStackParamList } from '../App'
+import { useNavigation } from '@react-navigation/native'
+
+export type NavigationProp = NativeStackNavigationProp<RootStackParamList, "Home">;
+
 
 const HomeScreen = () => {
+  const navigation = useNavigation<NavigationProp>();
+
   return (
     <SafeAreaView style={tw`flex-1 bg-gray-100 relative`}> 
     <ScrollView>
-        <TouchableOpacity style={tw`absolute z-50 top-5 right-10 items-center`}>
+        <TouchableOpacity 
+        onPress={() => navigation.navigate("Paywall")}
+        
+        style={tw`absolute z-50 top-5 right-10 items-center`}>
             <Ionicons name="person-circle" size={24} color="#E5962D" />
             <Text style={tw`text-center text-[#E5962D]`}>User</Text>
         </TouchableOpacity>

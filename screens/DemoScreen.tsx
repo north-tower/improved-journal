@@ -13,7 +13,7 @@ const DemoScreen = () => {
 
   return (
     <SafeAreaView style={tw`bg-[#E5962D] flex-1`}>
-      <TouchableOpacity onPress={navigation.goBack}>
+      <TouchableOpacity style={tw`flex-row items-center p-5`} onPress={navigation.goBack}>
         <Ionicons name="arrow-back" size={50} color="white" />
         <Text style={tw`text-white`}>Go Back</Text>
       </TouchableOpacity> 
