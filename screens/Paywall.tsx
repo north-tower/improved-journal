@@ -1,39 +1,34 @@
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
-import React, { Component } from 'react'
-import  Ionicons  from '@expo/vector-icons/Ionicons'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { RootStackParamList } from '../App'
-import { useNavigation } from '@react-navigation/native'
-import tw from 'twrnc'
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native'
+import React from 'react'
+import tw from 'twrnc';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../App';
+import { useNavigation } from '@react-navigation/native';
+
+export type NavigationProp = NativeStackNavigationProp<RootStackParamList, "Paywall">;
 
 
-export type NavigationProp = NativeStackNavigationProp<RootStackParamList, "Home">;
+const Paywall = () => {
+  const navigation = useNavigation<NavigationProp>();
 
+  return (
+    <ScrollView style={tw`bg-[#1A2F44] flex-1`}>
+    <View style={tw`m-10 space-y-2`}>
+        <Text style={tw`text-2xl text-center uppercase text-white font-bold`}>
+            upgrade
+        </Text>
+        <Text style={tw`text-center text-white`}>
+            Upgrade to Pro
+        </Text>
+    </View>
 
-
-
-
-export class Paywall extends Component {
-  render() {
-    return (
-      <ScrollView style={tw`bg-[#1A2F44] flex-1`}>
-        <View style={tw`m-10 space-y-2`}>
-            <Text style={tw`text-2xl text-center uppercase text-white font-bold`}>
-                upgrade
-            </Text>
-            <Text style={tw`text-center text-white`}>
-                Upgrade to Pro
-            </Text>
-        </View>
-
-        <TouchableOpacity>
-            {/* <Ionicons name="" size={32} color="#E5962D" /> */}
-            {/* <Ionicons name="person-circle" size={24} color="#E5962D" /> */}
+    <TouchableOpacity onPress={navigation.goBack}>
+        {/* <Ionicons name="" size={32} color="#E5962D" /> */}
+        {/* <Ionicons name="person-circle" size={24} color="#E5962D" /> */}
 CLOSE
-        </TouchableOpacity>
-      </ScrollView>
-    )
-  }
+    </TouchableOpacity>
+  </ScrollView>
+  )
 }
 
 export default Paywall
